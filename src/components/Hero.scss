@@ -1,0 +1,248 @@
+@import '../styles/variables';
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  
+  &__slider {
+    position: absolute;
+    inset: 0;
+  }
+  
+  &__slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: opacity 1s ease, transform 6s ease;
+    
+    &--active {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba($color-primary-dark, 0.9) 0%,
+      rgba($color-primary, 0.7) 50%,
+      rgba($color-dark, 0.8) 100%
+    );
+  }
+  
+  &__content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding-top: 100px;
+  }
+  
+  &__text {
+    max-width: 700px;
+    animation: fadeInUp 1s ease forwards;
+  }
+  
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-xs;
+    padding: $space-xs $space-sm;
+    background: rgba($color-white, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba($color-white, 0.2);
+    border-radius: $radius-full;
+    color: $color-white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: $space-md;
+    
+    &-dot {
+      width: 8px;
+      height: 8px;
+      background: #4ADE80;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+  }
+  
+  &__title {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 700;
+    color: $color-white;
+    line-height: 1.1;
+    margin-bottom: $space-md;
+    
+    &-accent {
+      display: block;
+      color: $color-accent;
+      font-style: italic;
+    }
+  }
+  
+  &__subtitle {
+    font-size: 1.25rem;
+    color: rgba($color-white, 0.9);
+    margin-bottom: $space-lg;
+    max-width: 500px;
+  }
+  
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-md;
+    margin-bottom: $space-xl;
+    
+    &-item {
+      display: flex;
+      align-items: center;
+      gap: $space-xs;
+      color: rgba($color-white, 0.85);
+      font-size: 1rem;
+      
+      @include responsive(sm) {
+        font-size: 0.875rem;
+      }
+    }
+    
+    &-icon {
+      font-size: 1.25rem;
+    }
+  }
+  
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-sm;
+    
+    .btn {
+      padding: $space-md $space-xl;
+      font-size: 1.125rem;
+      
+      @include responsive(sm) {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+  
+  &__indicators {
+    position: absolute;
+    bottom: $space-xl;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: $space-sm;
+    z-index: 10;
+  }
+  
+  &__indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba($color-white, 0.3);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all $transition-base;
+    
+    &:hover {
+      background: rgba($color-white, 0.5);
+    }
+    
+    &--active {
+      background: $color-accent;
+      border-color: $color-white;
+      transform: scale(1.2);
+    }
+  }
+  
+  &__scroll {
+    position: absolute;
+    bottom: $space-xl;
+    right: $space-xl;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-xs;
+    color: $color-white;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 10;
+    
+    @include responsive(md) {
+      display: none;
+    }
+    
+    &-line {
+      width: 2px;
+      height: 60px;
+      background: rgba($color-white, 0.3);
+      position: relative;
+      overflow: hidden;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 30px;
+        background: $color-white;
+        animation: scrollLine 2s ease-in-out infinite;
+      }
+    }
+  }
+  
+  &__shapes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  
+  &__shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    
+    &--1 {
+      width: 400px;
+      height: 400px;
+      background: $color-accent;
+      top: -100px;
+      right: -100px;
+      animation: float 8s ease-in-out infinite;
+    }
+    
+    &--2 {
+      width: 300px;
+      height: 300px;
+      background: $color-primary-light;
+      bottom: -50px;
+      left: -50px;
+      animation: float 6s ease-in-out infinite 1s;
+    }
+    
+    &--3 {
+      width: 200px;
+      height: 200px;
+      background: $color-secondary;
+      top: 50%;
+      right: 10%;
+      animation: float 7s ease-in-out infinite 0.5s;
+    }
+  }
+}
+
+@keyframes scrollLine {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}

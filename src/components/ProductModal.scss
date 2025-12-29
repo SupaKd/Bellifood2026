@@ -1,0 +1,246 @@
+@import '../styles/variables';
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-md;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease;
+  
+  &__container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    background: $color-white;
+    border-radius: $radius-xl;
+    overflow: hidden;
+    box-shadow: $shadow-xl;
+    animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  &__close {
+    position: absolute;
+    top: $space-md;
+    right: $space-md;
+    width: 44px;
+    height: 44px;
+    background: $color-white;
+    border-radius: 50%;
+    font-size: 2rem;
+    color: $color-dark;
+    z-index: 10;
+    @include flex-center;
+    transition: all $transition-base;
+    box-shadow: $shadow-md;
+    
+    &:hover {
+      background: $color-accent;
+      color: $color-white;
+      transform: rotate(90deg);
+    }
+    
+    span {
+      line-height: 1;
+      margin-top: -2px;
+    }
+  }
+  
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    max-height: 90vh;
+    
+    @include responsive(md) {
+      grid-template-columns: 1fr;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+  }
+  
+  &__image-section {
+    position: relative;
+    
+    @include responsive(md) {
+      height: 250px;
+    }
+  }
+  
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+    @include responsive(md) {
+      height: 250px;
+    }
+  }
+  
+  &__image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 60%,
+      rgba($color-primary-dark, 0.9) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: $space-lg;
+  }
+  
+  &__category-badge {
+    padding: $space-xs $space-md;
+    background: rgba($color-white, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: $radius-full;
+    color: $color-white;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  &__details {
+    padding: $space-xl;
+    overflow-y: auto;
+    
+    @include responsive(md) {
+      padding: $space-lg;
+    }
+  }
+  
+  &__header {
+    @include flex-between;
+    margin-bottom: $space-md;
+    flex-wrap: wrap;
+    gap: $space-sm;
+  }
+  
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $color-dark;
+    
+    @include responsive(sm) {
+      font-size: 1.5rem;
+    }
+  }
+  
+  &__price {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $color-primary;
+    font-family: $font-display;
+    padding: $space-xs $space-md;
+    background: $color-secondary;
+    border-radius: $radius-md;
+  }
+  
+  &__description {
+    font-size: 1rem;
+    color: $color-text-light;
+    line-height: 1.7;
+    margin-bottom: $space-lg;
+    padding-bottom: $space-lg;
+    border-bottom: 1px solid $color-secondary;
+  }
+  
+  &__section {
+    margin-bottom: $space-lg;
+    
+    &-title {
+      display: flex;
+      align-items: center;
+      gap: $space-xs;
+      font-size: 1rem;
+      font-weight: 600;
+      color: $color-dark;
+      margin-bottom: $space-sm;
+      
+      span {
+        font-size: 1.25rem;
+      }
+    }
+  }
+  
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-xs;
+    
+    &--sauces {
+      .modal__tag {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+      }
+    }
+  }
+  
+  &__tag {
+    padding: $space-xs $space-sm;
+    background: $color-secondary;
+    color: $color-text;
+    font-size: 0.813rem;
+    font-weight: 500;
+    border-radius: $radius-sm;
+    transition: all $transition-base;
+    cursor: default;
+    
+    &:hover {
+      background: $color-primary;
+      color: $color-white;
+    }
+    
+    &--sauce {
+      background: $color-secondary-light;
+      border: 1px solid $color-secondary-dark;
+    }
+  }
+  
+  &__info {
+    display: flex;
+    gap: $space-lg;
+    margin-bottom: $space-lg;
+    padding: $space-md;
+    background: $color-secondary-light;
+    border-radius: $radius-md;
+    
+    @include responsive(sm) {
+      flex-direction: column;
+      gap: $space-sm;
+    }
+    
+    &-item {
+      display: flex;
+      align-items: center;
+      gap: $space-xs;
+      font-size: 0.875rem;
+      color: $color-text;
+    }
+    
+    &-icon {
+      font-size: 1.25rem;
+    }
+  }
+  
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+  }
+  
+  &__order-btn {
+    width: 100%;
+    padding: $space-md;
+    font-size: 1.125rem;
+  }
+  
+  &__call-btn {
+    width: 100%;
+    padding: $space-sm $space-md;
+  }
+}

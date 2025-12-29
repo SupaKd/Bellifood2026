@@ -1,0 +1,223 @@
+@import '../styles/variables';
+
+.menu {
+  background: $color-secondary-light;
+  position: relative;
+  
+  &__categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $space-sm;
+    margin-bottom: $space-2xl;
+  }
+  
+  &__category {
+    display: flex;
+    align-items: center;
+    gap: $space-xs;
+    padding: $space-sm $space-md;
+    background: $color-white;
+    border: 2px solid transparent;
+    border-radius: $radius-full;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $color-text;
+    transition: all $transition-base;
+    white-space: nowrap;
+    
+    &:hover {
+      border-color: $color-primary;
+      transform: translateY(-2px);
+      box-shadow: $shadow-sm;
+    }
+    
+    &--active {
+      background: $color-primary;
+      color: $color-white;
+      border-color: $color-primary;
+      box-shadow: $shadow-md;
+    }
+    
+    &-emoji {
+      font-size: 1.25rem;
+    }
+    
+    &-name {
+      @include responsive(md) {
+        display: none;
+      }
+    }
+  }
+  
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: $space-2xl;
+    align-items: start;
+    
+    @include responsive(lg) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &__image-section {
+    position: sticky;
+    top: 120px;
+    
+    @include responsive(lg) {
+      position: relative;
+      top: 0;
+    }
+  }
+  
+  &__image-wrapper {
+    position: relative;
+    border-radius: $radius-xl;
+    overflow: hidden;
+    box-shadow: $shadow-lg;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        transparent 50%,
+        rgba($color-primary-dark, 0.8) 100%
+      );
+      z-index: 1;
+    }
+  }
+  
+  &__image {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    transition: transform $transition-slow;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+    
+    @include responsive(lg) {
+      aspect-ratio: 16/9;
+    }
+  }
+  
+  &__image-badge {
+    position: absolute;
+    bottom: $space-lg;
+    left: $space-lg;
+    right: $space-lg;
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    padding: $space-md;
+    background: rgba($color-white, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: $radius-lg;
+    color: $color-white;
+    font-family: $font-display;
+    font-size: 1.25rem;
+    font-weight: 600;
+    z-index: 2;
+    
+    span:first-child {
+      font-size: 2rem;
+    }
+  }
+  
+  &__products {
+    background: $color-white;
+    border-radius: $radius-xl;
+    padding: $space-xl;
+    box-shadow: $shadow-sm;
+  }
+  
+  &__products-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $color-primary;
+    margin-bottom: $space-lg;
+    padding-bottom: $space-md;
+    border-bottom: 2px solid $color-secondary;
+  }
+  
+  &__products-list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+  }
+  
+  &__product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-md;
+    padding: $space-md;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: all $transition-base;
+    animation: fadeInUp 0.4s ease forwards;
+    opacity: 0;
+    
+    &:hover {
+      background: $color-secondary-light;
+      transform: translateX(8px);
+      
+      .menu__product-price {
+        background: $color-primary;
+        color: $color-white;
+      }
+    }
+    
+    &-info {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    &-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: $color-dark;
+      margin-bottom: 2px;
+    }
+    
+    &-desc {
+      font-size: 0.813rem;
+      color: $color-text-light;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    &-price-wrapper {
+      display: flex;
+      align-items: center;
+      gap: $space-sm;
+      flex-shrink: 0;
+    }
+    
+    &-line {
+      width: 40px;
+      height: 1px;
+      background: $color-secondary-dark;
+      
+      @include responsive(sm) {
+        display: none;
+      }
+    }
+    
+    &-price {
+      font-size: 1rem;
+      font-weight: 700;
+      color: $color-primary;
+      padding: $space-xs $space-sm;
+      background: $color-secondary;
+      border-radius: $radius-sm;
+      transition: all $transition-base;
+      white-space: nowrap;
+    }
+  }
+}
