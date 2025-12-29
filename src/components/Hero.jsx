@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapPin, faClock } from '@fortawesome/free-solid-svg-icons';
 import { restaurant, heroImages } from '../data/restaurant';
 import './Hero.scss';
 
@@ -43,11 +45,11 @@ const Hero = () => {
             
             <div className="hero__info">
               <div className="hero__info-item">
-                <span className="hero__info-icon">📍</span>
+                <FontAwesomeIcon icon={faMapPin} className="hero__info-icon" />
                 <span>{restaurant.address}</span>
               </div>
               <div className="hero__info-item">
-                <span className="hero__info-icon">🕐</span>
+                <FontAwesomeIcon icon={faClock} className="hero__info-icon" />
                 <span>{restaurant.hours}</span>
               </div>
             </div>
@@ -59,7 +61,6 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 className="btn btn--accent"
               >
-                <span>🛵</span>
                 Commander maintenant
               </a>
               <a href="#menu" className="btn btn--ghost">

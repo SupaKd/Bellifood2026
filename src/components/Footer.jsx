@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone, faMapPin, faClock } from '@fortawesome/free-solid-svg-icons';
 import { restaurant } from '../data/restaurant';
 import './Footer.scss';
 
@@ -32,15 +34,17 @@ const Footer = () => {
               <ul>
                 <li>
                   <a href={`tel:${restaurant.phone}`}>
-                    📞 {restaurant.phone}
+                    <FontAwesomeIcon icon={faPhone} /> {restaurant.phone}
                   </a>
                 </li>
                 <li>
                   <a href={restaurant.maps.url} target="_blank" rel="noopener noreferrer">
-                    📍 {restaurant.address}
+                    <FontAwesomeIcon icon={faMapPin} /> {restaurant.address}
                   </a>
                 </li>
-                <li>🕐 {restaurant.hours}</li>
+                <li>
+                  <FontAwesomeIcon icon={faClock} /> {restaurant.hours}
+                </li>
               </ul>
             </div>
 

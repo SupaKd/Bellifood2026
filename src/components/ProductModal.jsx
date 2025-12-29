@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDrumstickBite, faDroplet, faClock, faFire, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { restaurant, sauces, viandes } from '../data/restaurant';
 import './ProductModal.scss';
 
@@ -28,7 +30,7 @@ const ProductModal = ({ product, onClose }) => {
     <div className="modal" onClick={handleBackdropClick}>
       <div className="modal__container">
         <button className="modal__close" onClick={onClose} aria-label="Fermer">
-          <span>×</span>
+          <FontAwesomeIcon icon={faXmark} />
         </button>
 
         <div className="modal__content">
@@ -57,7 +59,7 @@ const ProductModal = ({ product, onClose }) => {
 
             <div className="modal__section">
               <h3 className="modal__section-title">
-                <span>🥩</span> Choix de viande
+                <FontAwesomeIcon icon={faDrumstickBite} /> Choix de viande
               </h3>
               <div className="modal__tags">
                 {viandes.map((viande, index) => (
@@ -70,7 +72,7 @@ const ProductModal = ({ product, onClose }) => {
 
             <div className="modal__section">
               <h3 className="modal__section-title">
-                <span>🍯</span> Nos sauces
+                <FontAwesomeIcon icon={faDroplet} /> Nos sauces
               </h3>
               <div className="modal__tags modal__tags--sauces">
                 {sauces.map((sauce, index) => (
@@ -83,11 +85,11 @@ const ProductModal = ({ product, onClose }) => {
 
             <div className="modal__info">
               <div className="modal__info-item">
-                <span className="modal__info-icon">🕐</span>
+                <FontAwesomeIcon icon={faClock} className="modal__info-icon" />
                 <span>Préparation ~10 min</span>
               </div>
               <div className="modal__info-item">
-                <span className="modal__info-icon">🔥</span>
+                <FontAwesomeIcon icon={faFire} className="modal__info-icon" />
                 <span>Servi chaud</span>
               </div>
             </div>
@@ -106,7 +108,7 @@ const ProductModal = ({ product, onClose }) => {
                 href={`tel:${restaurant.phone}`}
                 className="btn btn--secondary modal__call-btn"
               >
-                <span>📞</span>
+                <FontAwesomeIcon icon={faPhone} />
                 Appeler pour commander
               </a>
             </div>

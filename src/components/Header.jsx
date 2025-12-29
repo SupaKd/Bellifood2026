@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone, faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { restaurant } from '../data/restaurant';
 import './Header.scss';
 
@@ -47,7 +49,7 @@ const Header = () => {
 
           <div className="header__actions">
             <a href={`tel:${restaurant.phone}`} className="header__phone">
-              <span className="header__phone-icon">📞</span>
+              <FontAwesomeIcon icon={faPhone} className="header__phone-icon" />
               <span className="header__phone-text">{restaurant.phone}</span>
             </a>
             <a 
@@ -65,9 +67,10 @@ const Header = () => {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Menu"
           >
-            <span></span>
-            <span></span>
-            <span></span>
+            <FontAwesomeIcon 
+              icon={isMobileMenuOpen ? faXmark : faBars} 
+              style={{ fontSize: '24px' }}
+            />
           </button>
         </nav>
       </div>

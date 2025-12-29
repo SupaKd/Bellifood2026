@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faList, faDrumstickBite, faDroplet } from '@fortawesome/free-solid-svg-icons';
 import { categories } from '../data/restaurant';
 import './Menu.scss';
 
@@ -12,7 +14,7 @@ const Menu = ({ onProductClick }) => {
       <div className="container">
         <div className="section-header">
           <span className="section-badge">
-            <span>📋</span>
+            <FontAwesomeIcon icon={faList} />
             Notre carte
           </span>
           <h2>Explorez notre <span>Menu</span></h2>

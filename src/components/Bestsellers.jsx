@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faFire } from '@fortawesome/free-solid-svg-icons';
 import { bestsellers } from '../data/restaurant';
 import './Bestsellers.scss';
 
@@ -7,7 +9,7 @@ const Bestsellers = ({ onProductClick }) => {
       <div className="container">
         <div className="section-header">
           <span className="section-badge">
-            <span>⭐</span>
+            <FontAwesomeIcon icon={faStar} />
             Favoris des clients
           </span>
           <h2>Nos <span>Bestsellers</span></h2>
@@ -32,7 +34,9 @@ const Bestsellers = ({ onProductClick }) => {
                 <div className="bestsellers__overlay">
                   <span className="bestsellers__view">Voir détails</span>
                 </div>
-                <span className="bestsellers__badge">🔥 Best-seller</span>
+                <span className="bestsellers__badge">
+                  <FontAwesomeIcon icon={faFire} /> Best-seller
+                </span>
               </div>
               
               <div className="bestsellers__content">
