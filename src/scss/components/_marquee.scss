@@ -1,0 +1,130 @@
+// ============================================
+// MARQUEE COMPONENT
+// Mobile-First Infinite Scroll Text
+// ============================================
+
+
+
+.marquee {
+  padding: $space-4 0;
+  background: $color-secondary;
+  border-top: $border-width solid rgba($color-white, 0.05);
+  border-bottom: $border-width solid rgba($color-white, 0.05);
+  overflow: hidden;
+  position: relative;
+  
+  @include md {
+    padding: $space-5 0;
+  }
+  
+  // Fade edges
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: $z-raised;
+    pointer-events: none;
+    
+    @include md {
+      width: 200px;
+    }
+  }
+  
+  &::before {
+    left: 0;
+    background: linear-gradient(
+      to right,
+      $color-secondary,
+      transparent
+    );
+  }
+  
+  &::after {
+    right: 0;
+    background: linear-gradient(
+      to left,
+      $color-secondary,
+      transparent
+    );
+  }
+  
+  // ----------------------------------------
+  // TRACK
+  // ----------------------------------------
+  
+  &__track {
+    @include flex(row, flex-start, center);
+    width: max-content;
+    animation: marquee 30s linear infinite;
+    
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+  
+  // ----------------------------------------
+  // CONTENT
+  // ----------------------------------------
+  
+  &__content {
+    @include flex(row, flex-start, center);
+    gap: $space-8;
+    padding: 0 $space-8;
+    
+    @include md {
+      gap: $space-12;
+      padding: 0 $space-12;
+    }
+  }
+  
+  // ----------------------------------------
+  // ITEM
+  // ----------------------------------------
+  
+  &__item {
+    @include flex(row, flex-start, center);
+    gap: $space-3;
+    white-space: nowrap;
+    
+    @include md {
+      gap: $space-4;
+    }
+  }
+  
+  &__emoji {
+    font-size: $font-size-xl;
+    
+    @include md {
+      font-size: $font-size-2xl;
+    }
+  }
+  
+  &__text {
+    font-family: $font-display;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-gray-400;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    
+    @include md {
+      font-size: $font-size-md;
+    }
+    
+    // Accent color pour certains items
+    &--accent {
+      color: $color-primary;
+    }
+  }
+  
+  &__separator {
+    width: 6px;
+    height: 6px;
+    background: $color-gray-600;
+    border-radius: $radius-full;
+    flex-shrink: 0;
+  }
+}

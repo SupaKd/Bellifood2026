@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faFire } from '@fortawesome/free-solid-svg-icons';
 import { bestsellers } from '../data/restaurant';
-import './Bestsellers.scss';
 
 const Bestsellers = ({ onProductClick }) => {
   return (

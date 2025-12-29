@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { restaurant } from '../data/restaurant';
-import './Header.scss';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,8 +28,7 @@ const Header = () => {
       <div className="container">
         <nav className="header__nav">
           <a href="#home" className="header__logo">
-            <span className="header__logo-icon">🌮</span>
-            <span className="header__logo-text">{restaurant.name}</span>
+            <img src="/image/belli.logo.webp" alt="" />
           </a>
 
           <ul className={`header__menu ${isMobileMenuOpen ? 'header__menu--open' : ''}`}>

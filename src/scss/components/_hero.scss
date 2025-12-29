@@ -1,0 +1,326 @@
+// ============================================
+// HERO COMPONENT
+// Mobile-First Immersive Hero Section
+// ============================================
+
+
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  @include flex(column, flex-end, stretch);
+  overflow: hidden;
+  
+  // ----------------------------------------
+  // SLIDER BACKGROUND
+  // ----------------------------------------
+  
+  &__slider {
+    @include absolute-fill;
+    z-index: $z-negative;
+  }
+  
+  &__slide {
+    @include absolute-fill;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: opacity 1.5s ease, transform 8s ease-out;
+    
+    &--active {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  &__overlay {
+    @include absolute-fill;
+    background: $gradient-hero;
+    
+    // Ajout d'un grain subtil
+    &::after {
+      content: '';
+      @include absolute-fill;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.04;
+      mix-blend-mode: overlay;
+    }
+  }
+  
+  // ----------------------------------------
+  // CONTENT
+  // ----------------------------------------
+  
+  &__content {
+    position: relative;
+    z-index: $z-raised;
+    padding-top: 120px;
+    padding-bottom: $space-20;
+    
+    @include md {
+      padding-bottom: $space-24;
+    }
+  }
+  
+  &__text {
+    max-width: 700px;
+  }
+  
+  // Badge "Ouvert maintenant"
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-4;
+    background: rgba($color-success, 0.1);
+    border: $border-width solid rgba($color-success, 0.3);
+    border-radius: $radius-full;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $color-success;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    margin-bottom: $space-6;
+    animation: fadeInUp 0.8s ease 0.2s backwards;
+    
+    @include md {
+      font-size: $font-size-sm;
+      padding: $space-2 $space-5;
+    }
+  }
+  
+  &__badge-dot {
+    width: 8px;
+    height: 8px;
+    background: $color-success;
+    border-radius: $radius-full;
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 10px rgba($color-success, 0.5);
+  }
+  
+  // Titre
+  &__title {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-black;
+    line-height: 1;
+    margin-bottom: $space-4;
+    animation: fadeInUp 0.8s ease 0.3s backwards;
+    
+    @include sm {
+      font-size: $font-size-5xl;
+    }
+    
+    @include md {
+      font-size: clamp(3.5rem, 8vw, 5.5rem);
+    }
+  }
+  
+  &__title-accent {
+    display: block;
+    @include text-gradient;
+    margin-top: $space-1;
+  }
+  
+  // Slogan
+  &__subtitle {
+    font-size: $font-size-md;
+    color: $color-gray-300;
+    margin-bottom: $space-6;
+    max-width: 500px;
+    animation: fadeInUp 0.8s ease 0.4s backwards;
+    
+    @include md {
+      font-size: $font-size-lg;
+      margin-bottom: $space-8;
+    }
+  }
+  
+  // Infos (adresse, horaires)
+  &__info {
+    @include flex(column, flex-start, flex-start);
+    gap: $space-3;
+    margin-bottom: $space-8;
+    animation: fadeInUp 0.8s ease 0.5s backwards;
+    
+    @include sm {
+      flex-direction: row;
+      gap: $space-6;
+    }
+  }
+  
+  &__info-item {
+    @include flex(row, flex-start, center);
+    gap: $space-2;
+    color: $color-gray-300;
+    font-size: $font-size-sm;
+    
+    @include md {
+      font-size: $font-size-base;
+    }
+  }
+  
+  &__info-icon {
+    color: $color-primary;
+    font-size: $font-size-base;
+  }
+  
+  // Boutons d'action
+  &__actions {
+    @include flex(column, flex-start, stretch);
+    gap: $space-3;
+    animation: fadeInUp 0.8s ease 0.6s backwards;
+    
+    @include sm {
+      flex-direction: row;
+      align-items: center;
+    }
+    
+    .btn {
+      width: 100%;
+      
+      @include sm {
+        width: auto;
+      }
+    }
+  }
+  
+  // ----------------------------------------
+  // INDICATORS (Pagination slider)
+  // ----------------------------------------
+  
+  &__indicators {
+    position: absolute;
+    bottom: $space-8;
+    left: 50%;
+    transform: translateX(-50%);
+    @include flex(row, center, center);
+    gap: $space-2;
+    z-index: $z-raised;
+    
+    @include md {
+      left: auto;
+      right: $space-8;
+      transform: none;
+      flex-direction: column;
+    }
+  }
+  
+  &__indicator {
+    @include button-reset;
+    width: 32px;
+    height: 4px;
+    background: rgba($color-white, 0.3);
+    border-radius: $radius-full;
+    transition: all $transition-base;
+    
+    @include md {
+      width: 4px;
+      height: 32px;
+    }
+    
+    &:hover {
+      background: rgba($color-white, 0.5);
+    }
+    
+    &--active {
+      background: $color-primary;
+      width: 48px;
+      
+      @include md {
+        width: 4px;
+        height: 48px;
+      }
+    }
+  }
+  
+  // ----------------------------------------
+  // SCROLL INDICATOR
+  // ----------------------------------------
+  
+  &__scroll {
+    position: absolute;
+    bottom: $space-8;
+    left: $space-6;
+    @include flex(column, center, center);
+    gap: $space-2;
+    color: rgba($color-white, 0.5);
+    font-size: $font-size-xs;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-widest;
+    display: none;
+    
+    @include lg {
+      display: flex;
+    }
+  }
+  
+  &__scroll-line {
+    width: 1px;
+    height: 0;
+    background: linear-gradient(
+      to bottom,
+      $color-primary,
+      transparent
+    );
+    animation: lineGrow 1s ease 1s forwards;
+  }
+  
+  // ----------------------------------------
+  // SHAPES DECORATIVES
+  // ----------------------------------------
+  
+  &__shapes {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: $z-base;
+  }
+  
+  &__shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.5;
+    filter: blur(80px);
+    
+    &--1 {
+      width: 300px;
+      height: 300px;
+      background: $color-primary;
+      top: 10%;
+      right: -100px;
+      animation: shapeFloat1 20s ease-in-out infinite;
+      
+      @include md {
+        width: 500px;
+        height: 500px;
+      }
+    }
+    
+    &--2 {
+      width: 200px;
+      height: 200px;
+      background: $color-accent;
+      bottom: 20%;
+      left: -50px;
+      animation: shapeFloat2 15s ease-in-out infinite;
+      
+      @include md {
+        width: 400px;
+        height: 400px;
+      }
+    }
+    
+    &--3 {
+      width: 150px;
+      height: 150px;
+      background: $color-secondary-light;
+      top: 40%;
+      right: 20%;
+      animation: shapeFloat1 25s ease-in-out infinite reverse;
+      opacity: 0.3;
+    }
+  }
+}

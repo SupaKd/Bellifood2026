@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList, faDrumstickBite, faDroplet } from '@fortawesome/free-solid-svg-icons';
 import { categories } from '../data/restaurant';
-import './Menu.scss';
 
 const Menu = ({ onProductClick }) => {
   const [activeCategory, setActiveCategory] = useState(1);

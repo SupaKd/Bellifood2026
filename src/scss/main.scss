@@ -1,0 +1,164 @@
+// ============================================
+// BELLIFOOD - MAIN SCSS
+// Point d'entrée principal
+// ============================================
+
+// --------------------------------------------
+// FONTS - Google Fonts
+// --------------------------------------------
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+// Alternative: Si vous utilisez Clash Display (premium)
+// @import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
+
+@import './styles/variables';
+@import './styles/mixins';
+@import './styles/base';
+@import './components/bestsellers.scss';
+@import './components/contact.scss';
+@import './components/footer.scss';
+@import './components/header.scss';
+@import './components/hero.scss';
+@import './components/marquee.scss';
+@import './components/menu.scss';
+@import './components/productModal.scss';
+
+
+// --------------------------------------------
+// UTILITY CLASSES
+// --------------------------------------------
+
+// Marges
+.mt-auto { margin-top: auto; }
+.mb-auto { margin-bottom: auto; }
+.ml-auto { margin-left: auto; }
+.mr-auto { margin-right: auto; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+@for $i from 0 through 12 {
+  .mt-#{$i} { margin-top: $i * 0.25rem; }
+  .mb-#{$i} { margin-bottom: $i * 0.25rem; }
+  .ml-#{$i} { margin-left: $i * 0.25rem; }
+  .mr-#{$i} { margin-right: $i * 0.25rem; }
+  .mx-#{$i} { margin-left: $i * 0.25rem; margin-right: $i * 0.25rem; }
+  .my-#{$i} { margin-top: $i * 0.25rem; margin-bottom: $i * 0.25rem; }
+  .m-#{$i} { margin: $i * 0.25rem; }
+  
+  .pt-#{$i} { padding-top: $i * 0.25rem; }
+  .pb-#{$i} { padding-bottom: $i * 0.25rem; }
+  .pl-#{$i} { padding-left: $i * 0.25rem; }
+  .pr-#{$i} { padding-right: $i * 0.25rem; }
+  .px-#{$i} { padding-left: $i * 0.25rem; padding-right: $i * 0.25rem; }
+  .py-#{$i} { padding-top: $i * 0.25rem; padding-bottom: $i * 0.25rem; }
+  .p-#{$i} { padding: $i * 0.25rem; }
+}
+
+// Display
+.hidden { display: none; }
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.grid { display: grid; }
+
+// Flexbox utilities
+.flex-row { flex-direction: row; }
+.flex-col { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.items-center { align-items: center; }
+.items-stretch { align-items: stretch; }
+.gap-2 { gap: 0.5rem; }
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+
+// Text
+.text-xs { font-size: $font-size-xs; }
+.text-sm { font-size: $font-size-sm; }
+.text-base { font-size: $font-size-base; }
+.text-lg { font-size: $font-size-lg; }
+.text-xl { font-size: $font-size-xl; }
+.text-2xl { font-size: $font-size-2xl; }
+.text-3xl { font-size: $font-size-3xl; }
+
+.font-light { font-weight: $font-weight-light; }
+.font-normal { font-weight: $font-weight-regular; }
+.font-medium { font-weight: $font-weight-medium; }
+.font-semibold { font-weight: $font-weight-semibold; }
+.font-bold { font-weight: $font-weight-bold; }
+
+.text-white { color: $color-white; }
+.text-gray { color: $color-gray-400; }
+.text-primary { color: $color-primary; }
+.text-accent { color: $color-accent; }
+
+// Background
+.bg-dark { background-color: $color-dark; }
+.bg-secondary { background-color: $color-secondary; }
+.bg-primary { background-color: $color-primary; }
+
+// Border radius
+.rounded { border-radius: $radius-md; }
+.rounded-lg { border-radius: $radius-lg; }
+.rounded-xl { border-radius: $radius-xl; }
+.rounded-2xl { border-radius: $radius-2xl; }
+.rounded-full { border-radius: $radius-full; }
+
+// Width & Height
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.min-h-screen { min-height: 100vh; }
+
+// Overflow
+.overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto; }
+
+// Position
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+// Z-index
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-50 { z-index: 50; }
+
+// Visibility
+.opacity-0 { opacity: 0; }
+.opacity-50 { opacity: 0.5; }
+.opacity-100 { opacity: 1; }
+
+// Transitions
+.transition { transition: all $transition-base; }
+.transition-fast { transition: all $transition-fast; }
+.transition-slow { transition: all $transition-slow; }
+
+// Cursors
+.cursor-pointer { cursor: pointer; }
+.cursor-default { cursor: default; }
+
+// Responsive utilities
+@include md {
+  .md\:hidden { display: none; }
+  .md\:block { display: block; }
+  .md\:flex { display: flex; }
+  .md\:grid { display: grid; }
+}
+
+@include lg {
+  .lg\:hidden { display: none; }
+  .lg\:block { display: block; }
+  .lg\:flex { display: flex; }
+  .lg\:grid { display: grid; }
+}

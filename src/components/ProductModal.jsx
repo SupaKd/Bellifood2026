@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDrumstickBite, faDroplet, faClock, faFire, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faDrumstickBite, faDroplet, faClock, faFire, faXmark,faPhone } from '@fortawesome/free-solid-svg-icons';
 import { restaurant, sauces, viandes } from '../data/restaurant';
-import './ProductModal.scss';
 
 const ProductModal = ({ product, onClose }) => {
   useEffect(() => {

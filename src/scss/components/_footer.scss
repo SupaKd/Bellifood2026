@@ -1,0 +1,241 @@
+// ============================================
+// FOOTER COMPONENT
+// Mobile-First Footer Layout
+// ============================================
+
+
+
+.footer {
+  background: $color-secondary;
+  padding-top: $space-12;
+  padding-bottom: $space-6;
+  border-top: $border-width solid rgba($color-white, 0.05);
+  position: relative;
+  overflow: hidden;
+  
+  // Gradient décoratif
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(
+      ellipse at center top,
+      rgba($color-primary, 0.08) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+  
+  @include md {
+    padding-top: $space-16;
+    padding-bottom: $space-8;
+  }
+  
+  // ----------------------------------------
+  // CONTENT
+  // ----------------------------------------
+  
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-10;
+    margin-bottom: $space-10;
+    
+    @include md {
+      grid-template-columns: 1fr 2fr;
+      gap: $space-16;
+    }
+    
+    @include lg {
+      grid-template-columns: 1.2fr 2fr;
+    }
+  }
+  
+  // ----------------------------------------
+  // BRAND SECTION
+  // ----------------------------------------
+  
+  &__brand {
+    text-align: center;
+    
+    @include md {
+      text-align: left;
+    }
+  }
+  
+  &__logo {
+    @include flex(row, center, center);
+    gap: $space-2;
+    text-decoration: none;
+    margin-bottom: $space-4;
+    
+    @include md {
+      justify-content: flex-start;
+    }
+    
+    &:hover {
+      .footer__logo-icon {
+        transform: rotate(-10deg) scale(1.1);
+      }
+    }
+  }
+  
+  &__logo-icon {
+    font-size: $font-size-3xl;
+    transition: transform $transition-base $transition-timing-spring;
+  }
+  
+  &__logo-text {
+    font-family: $font-display;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    
+    @include md {
+      font-size: $font-size-2xl;
+    }
+  }
+  
+  &__tagline {
+    font-size: $font-size-sm;
+    color: $color-gray-400;
+    max-width: 280px;
+    margin: 0 auto;
+    
+    @include md {
+      margin: 0;
+      font-size: $font-size-base;
+    }
+  }
+  
+  // ----------------------------------------
+  // LINKS GRID
+  // ----------------------------------------
+  
+  &__links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-8;
+    
+    @include sm {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  &__column {
+    h4 {
+      font-family: $font-display;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semibold;
+      color: $color-white;
+      text-transform: uppercase;
+      letter-spacing: $letter-spacing-wide;
+      margin-bottom: $space-4;
+      
+      @include md {
+        font-size: $font-size-base;
+        margin-bottom: $space-5;
+      }
+    }
+    
+    ul {
+      @include flex(column, flex-start, flex-start);
+      gap: $space-3;
+    }
+    
+    li {
+      font-size: $font-size-sm;
+      color: $color-gray-400;
+      
+      @include md {
+        font-size: $font-size-base;
+      }
+    }
+    
+    a {
+      @include flex(row, flex-start, center);
+      gap: $space-2;
+      text-decoration: none;
+      color: $color-gray-400;
+      transition: all $transition-fast;
+      
+      &:hover {
+        color: $color-primary;
+        transform: translateX(4px);
+      }
+      
+      svg {
+        font-size: $font-size-sm;
+        color: $color-gray-500;
+        transition: color $transition-fast;
+      }
+      
+      &:hover svg {
+        color: $color-primary;
+      }
+    }
+  }
+  
+  // ----------------------------------------
+  // CTA BUTTON
+  // ----------------------------------------
+  
+  &__cta {
+    margin-top: $space-2;
+    width: 100%;
+    
+    @include sm {
+      width: auto;
+    }
+  }
+  
+  // ----------------------------------------
+  // BOTTOM BAR
+  // ----------------------------------------
+  
+  &__bottom {
+    @include flex(column, center, center);
+    gap: $space-2;
+    padding-top: $space-6;
+    border-top: $border-width solid rgba($color-white, 0.05);
+    text-align: center;
+    
+    @include md {
+      @include flex-between;
+      flex-direction: row;
+    }
+    
+    p {
+      font-size: $font-size-sm;
+      color: $color-gray-500;
+      margin: 0;
+    }
+  }
+  
+  &__credit {
+    @include flex(row, center, center);
+    gap: $space-1;
+
+    a{
+      color: $color-primary;
+      text-decoration: none;
+      font-weight: $font-weight-medium;
+      transition: color $transition-fast;
+      
+      &:hover {
+        color: lighten($color-primary, 10%);
+      }
+    }
+
+    
+    // Animation du coeur
+    span {
+      display: inline-block;
+      animation: pulseScale 1.5s ease infinite;
+    }
+  }
+}

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapPin, faClock } from '@fortawesome/free-solid-svg-icons';
 import { restaurant, heroImages } from '../data/restaurant';
-import './Hero.scss';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

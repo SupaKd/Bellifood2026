@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faMapPin, faClock } from '@fortawesome/free-solid-svg-icons';
 import { restaurant } from '../data/restaurant';
-import './Footer.scss';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,7 +11,6 @@ const Footer = () => {
         <div className="footer__content">
           <div className="footer__brand">
             <a href="#home" className="footer__logo">
-              <span className="footer__logo-icon">🌮</span>
               <span className="footer__logo-text">{restaurant.name}</span>
             </a>
             <p className="footer__tagline">{restaurant.slogan}</p>
@@ -48,25 +46,14 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className="footer__column">
-              <h4>Commander</h4>
-              <a 
-                href={restaurant.social.ubereats}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn--accent footer__cta"
-              >
-                <span>🛵</span>
-                Uber Eats
-              </a>
-            </div>
+         
           </div>
         </div>
 
         <div className="footer__bottom">
           <p>© {currentYear} {restaurant.name}. Tous droits réservés.</p>
           <p className="footer__credit">
-            Fait avec ❤️ à Oyonnax
+            Powered by <a href="https://supaco-digital.com/" target="_blank" rel="noopener noreferrer">Supaco</a>
           </p>
         </div>
       </div>

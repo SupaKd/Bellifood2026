@@ -1,0 +1,299 @@
+// ============================================
+// HEADER COMPONENT
+// Mobile-First Responsive Navigation
+// ============================================
+
+
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-sticky;
+  padding: $space-4 0;
+  transition: all $transition-base;
+  
+  // État scrollé
+  &--scrolled {
+    padding: $space-3 0;
+    background: rgba($color-dark, 0.95);
+    backdrop-filter: $backdrop-blur;
+    border-bottom: $border-width solid rgba($color-white, 0.05);
+  }
+
+  img{
+    width: 60px;
+  }
+  
+  // Navigation container
+  &__nav {
+    @include flex(row, space-between, center);
+    gap: $space-4;
+  }
+  
+  // Logo
+  &__logo {
+    @include flex(row, flex-start, center);
+    gap: $space-2;
+    text-decoration: none;
+    z-index: $z-sticky + 1;
+    
+    &:hover {
+      .header__logo-icon {
+        transform: rotate(-10deg) scale(1.1);
+      }
+    }
+  }
+  
+  &__logo-icon {
+    font-size: $font-size-2xl;
+    transition: transform $transition-base $transition-timing-spring;
+    
+    @include md {
+      font-size: $font-size-3xl;
+    }
+  }
+  
+  &__logo-text {
+    font-family: $font-display;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    letter-spacing: $letter-spacing-tight;
+    
+    @include md {
+      font-size: $font-size-xl;
+    }
+  }
+  
+  // ----------------------------------------
+  // MENU DE NAVIGATION
+  // ----------------------------------------
+  
+  &__menu {
+    // Mobile : menu plein écran caché par défaut
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $z-sticky;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $space-2;
+    
+    background: rgba($color-dark, 0.98);
+    backdrop-filter: blur(20px);
+    
+    // Caché par défaut sur mobile
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+    transition: all 0.4s ease;
+    
+    // État ouvert mobile
+    &--open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    // Desktop : menu horizontal visible
+    @include md {
+      position: static;
+      flex-direction: row;
+      gap: $space-1;
+      
+      background: transparent;
+      backdrop-filter: none;
+      
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+    }
+    
+    // Style des items de liste
+    li {
+      overflow: hidden;
+      list-style: none;
+    }
+  }
+  
+  // ----------------------------------------
+  // LIENS DE NAVIGATION
+  // ----------------------------------------
+  
+  &__link {
+    display: block;
+    padding: $space-4 $space-6;
+    
+    font-family: $font-display;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    color: $color-white;
+    text-decoration: none;
+    text-align: center;
+    
+    position: relative;
+    transition: color $transition-fast, transform $transition-fast;
+    
+    &:hover {
+      color: $color-primary;
+      transform: scale(1.05);
+    }
+    
+    // Animation d'entrée sur mobile
+    .header__menu--open & {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+    
+    // Délais d'animation staggered
+    li:nth-child(1) & { animation-delay: 0.1s; }
+    li:nth-child(2) & { animation-delay: 0.15s; }
+    li:nth-child(3) & { animation-delay: 0.2s; }
+    li:nth-child(4) & { animation-delay: 0.25s; }
+    
+    // Desktop : style compact
+    @include md {
+      padding: $space-2 $space-4;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      border-radius: $radius-full;
+      
+      // Underline animée
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: $gradient-primary;
+        border-radius: $radius-full;
+        transform: translateX(-50%);
+        transition: width $transition-base;
+      }
+      
+      &:hover {
+        transform: none;
+        
+        &::after {
+          width: 70%;
+        }
+      }
+    }
+  }
+  
+  // ----------------------------------------
+  // ACTIONS (téléphone + CTA)
+  // ----------------------------------------
+  
+  &__actions {
+    @include flex(row, flex-end, center);
+    gap: $space-3;
+    
+    .btn {
+      display: none;
+      
+      @include md {
+        display: inline-flex;
+      }
+    }
+  }
+  
+  // Téléphone
+  &__phone {
+    display: none;
+    
+    @include lg {
+      @include flex(row, flex-start, center);
+      gap: $space-2;
+      color: $color-gray-300;
+      text-decoration: none;
+      font-size: $font-size-sm;
+      transition: color $transition-fast;
+    }
+    
+    &:hover {
+      color: $color-primary;
+      
+      .header__phone-icon {
+        animation: wiggle 0.5s ease;
+      }
+    }
+  }
+  
+  &__phone-icon {
+    color: $color-primary;
+  }
+  
+  &__phone-text {
+    font-weight: $font-weight-medium;
+  }
+  
+  // ----------------------------------------
+  // BURGER MENU
+  // ----------------------------------------
+  
+  &__burger {
+    @include button-reset;
+    @include flex-center;
+    
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-lg;
+    
+    color: $color-white;
+    background: rgba($color-white, 0.08);
+    border: $border-width solid rgba($color-white, 0.15);
+    
+    transition: all $transition-fast;
+    z-index: $z-sticky + 1;
+    
+    // Cacher sur desktop
+    @include md {
+      display: none;
+    }
+    
+    &:hover {
+      background: rgba($color-white, 0.15);
+      border-color: rgba($color-white, 0.25);
+    }
+    
+    // État ouvert
+    &--open {
+      background: $color-primary;
+      border-color: $color-primary;
+      
+      &:hover {
+        background: $color-primary-dark;
+        border-color: $color-primary-dark;
+      }
+    }
+    
+    svg {
+      width: 24px;
+      height: 24px;
+      transition: transform $transition-base;
+    }
+  }
+}
+
+// ----------------------------------------
+// ANIMATION KEYFRAME
+// ----------------------------------------
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

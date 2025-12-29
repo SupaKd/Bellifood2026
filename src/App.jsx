@@ -6,7 +6,7 @@ import Menu from './components/Menu';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProductModal from './components/ProductModal';
-import './styles/global.scss';
+import './scss/main.scss';
 
 function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);

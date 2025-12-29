@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapPin, faClock, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
 import { restaurant } from '../data/restaurant';
-import './Contact.scss';
 
 const Contact = () => {
   return (
@@ -88,15 +87,7 @@ const Contact = () => {
                 >
                   <FontAwesomeIcon icon={faTiktok} />
                 </a>
-                <a 
-                  href={restaurant.social.ubereats}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="contact__social-link contact__social-link--uber"
-                  aria-label="Uber Eats"
-                >
-                  <span>🛵</span>
-                </a>
+                
               </div>
             </div>
           </div>
